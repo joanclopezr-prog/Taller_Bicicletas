@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.parcial3.DoctorController">
+    <children>
+        <Label layoutX="300.0" layoutY="20.0" text="Gestión de Doctores">
+            <font>
+                <Font name="Book Antiqua Bold" size="28.0" />
+            </font>
+        </Label>
+
+
+        <VBox layoutX="50.0" layoutY="70.0" prefHeight="250.0" prefWidth="300.0" spacing="10" style="-fx-padding: 15; -fx-background-color: #f8f9fa; -fx-background-radius: 5;">
+            <Label text="Datos del Doctor" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+            <GridPane hgap="8" vgap="8">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="80"/>
+                    <ColumnConstraints prefWidth="180"/>
+                </columnConstraints>
+
+                <children>
+                    <Label text="Documento:" GridPane.rowIndex="0"/>
+                    <TextField fx:id="txtDocument" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="12345678"/>
+
+                    <Label text="Nombre:" GridPane.rowIndex="1"/>
+                    <TextField fx:id="txtName" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Nombre completo"/>
+
+                    <Label text="Teléfono:" GridPane.rowIndex="2"/>
+                    <TextField fx:id="txtPhone" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="3001234567"/>
+
+                    <Label text="Email:" GridPane.rowIndex="3"/>
+                    <TextField fx:id="txtEmail" GridPane.rowIndex="3" GridPane.columnIndex="1" promptText="email@hospital.com"/>
+
+                    <Label text="Edad:" GridPane.rowIndex="4"/>
+                    <TextField fx:id="txtAge" GridPane.rowIndex="4" GridPane.columnIndex="1" promptText="35"/>
+
+                    <Label text="Especialidad:" GridPane.rowIndex="5"/>
+                    <TextField fx:id="txtSpecialty" GridPane.rowIndex="5" GridPane.columnIndex="1" promptText="Especialidad médica"/>
+                </children>
+            </GridPane>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onSave" text=" Guardar"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#onUpdate" text=" Actualizar"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;" disable="true"/>
+                <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#onDelete" text=" Eliminar"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" disable="true"/>
+                <Button fx:id="btnClean" mnemonicParsing="false" onAction="#onClean" text=" Limpiar"
+                        style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+
+
+        <VBox layoutX="370.0" layoutY="70.0" prefHeight="500.0" prefWidth="400.0" spacing="10">
+            <Label text="Doctores Registrados" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <TableView fx:id="tableDoctors" prefHeight="450.0" prefWidth="400.0">
+                <columns>
+                    <TableColumn fx:id="colDocument" text="Documento" prefWidth="80"/>
+                    <TableColumn fx:id="colName" text="Nombre" prefWidth="120"/>
+                    <TableColumn fx:id="colPhone" text="Teléfono" prefWidth="80"/>
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="120"/>
+                    <TableColumn fx:id="colAge" text="Edad" prefWidth="50"/>
+                    <TableColumn fx:id="colSpecialty" text="Especialidad" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </children>
+</AnchorPane>
