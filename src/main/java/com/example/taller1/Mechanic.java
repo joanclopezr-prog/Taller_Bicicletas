@@ -1,15 +1,15 @@
 package com.example.parcial3;
 
-public class Doctor extends Person {
+public class Mechanic extends Person {
     private String specialty;
 
-    public Doctor(String document, String name, String phone, String email, int age, String specialty) {
+    public Mechanic(String document, String name, String phone, String email, int age, String specialty) {
         super(document, name, phone, email, age);
         this.specialty = specialty;
     }
 
 
-    public Doctor(String document, String name, String specialty) {
+    public Mechanic(String document, String name, String specialty) {
         super(document, name, "", "", 0);
         this.specialty = specialty;
     }

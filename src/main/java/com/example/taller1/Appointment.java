@@ -4,15 +4,15 @@ import java.time.LocalDate;
 
 public class Appointment {
     private String id;
-    private Patient patient;
-    private Doctor doctor;
+    private Client client;
+    private Mechanic mechanic;
     private double total;
     private LocalDate date;
 
-    public Appointment(String id, Patient patient, Doctor doctor, LocalDate date) {
+    public Appointment(String id, Client client, Mechanic mechanic, LocalDate date) {
         this.id = id;
-        this.patient = patient;
-        this.doctor = doctor;
+        this.client = client;
+        this.mechanic = mechanic;
         this.date = date;
         this.total = calculateTotal();
     }
@@ -23,8 +23,8 @@ public class Appointment {
     }
 
     public String getId() { return id; }
-    public Patient getPatient() { return patient; }
-    public Doctor getDoctor() { return doctor; }
+    public Client getClient() { return client; }
+    public Mechanic getMechanic() { return mechanic; }
     public double getTotal() { return total; }
     public LocalDate getDate() { return date; }
 }

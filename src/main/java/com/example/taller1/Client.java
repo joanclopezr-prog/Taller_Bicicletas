@@ -1,20 +1,20 @@
 package com.example.parcial3;
 
-public class Patient extends Person {
+public class Client extends Person {
     private String eps;
 
-    public Patient(String document, String name, String phone, String email, int age, String eps) {
+    public Client(String document, String name, String phone, String email, int age, String eps) {
         super(document, name, phone, email, age);
         this.eps = eps;
     }
 
-    public Patient(String document, String name, String phone, String email) {
+    public Client(String document, String name, String phone, String email) {
         super(document, name, phone, email, 0);
         this.eps = "";
     }
 
 
-    public Patient(String eps, String document, String name, String phone, String email, int age) {
+    public Client(String eps, String document, String name, String phone, String email, int age) {
         super(document, name, phone, email, age);
         this.eps = eps;
     }

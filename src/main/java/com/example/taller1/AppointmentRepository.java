@@ -12,12 +12,12 @@ public class AppointmentRepository {
     private AppointmentRepository() {
         appointments = new ArrayList<>();
 
-        PatientRepository patientRepo = PatientRepository.getInstance();
-        DoctorRepository doctorRepo = DoctorRepository.getInstance();
+        ClientRepository clientRepo = ClientRepository.getInstance();
+        MechanicRepository mechanicRepo = MechanicRepository.getInstance();
 
-        if (!patientRepo.getPatients().isEmpty() && !doctorRepo.getDoctors().isEmpty()) {
-            appointments.add(new Appointment("F001", patientRepo.getPatients().get(0), doctorRepo.getDoctors().get(0), LocalDate.now().minusDays(2)));
-            appointments.add(new Appointment("F002", patientRepo.getPatients().get(1), doctorRepo.getDoctors().get(1), LocalDate.now().minusDays(1)));
+        if (!clientRepo.getClients().isEmpty() && !mechanicRepo.getMechanics().isEmpty()) {
+            appointments.add(new Appointment("F001", clientRepo.getClients().get(0), mechanicRepo.getMechanics().get(0), LocalDate.now().minusDays(2)));
+            appointments.add(new Appointment("F002", clientRepo.getClients().get(1), mechanicRepo.getMechanics().get(1), LocalDate.now().minusDays(1)));
         }
     }
 

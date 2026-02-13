@@ -41,7 +41,7 @@ public class DashboardController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("patient.fxml"));
             Parent clientes = loader.load();
 
-            PatientController controller = loader.getController();
+            ClientController controller = loader.getController();
             controller.setDashboardController(this);
 
             mainContent.getChildren().clear();
@@ -58,7 +58,7 @@ public class DashboardController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("doctor.fxml"));
             Parent productos = loader.load();
 
-            DoctorController controller = loader.getController();
+            MechanicController controller = loader.getController();
             controller.setDashboardController(this);
 
             mainContent.getChildren().clear();

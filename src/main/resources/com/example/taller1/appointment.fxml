@@ -32,7 +32,7 @@
                     <ComboBox fx:id="cmbPatient" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Seleccione paciente" prefWidth="250"/>
 
                     <Label text="Doctor:" GridPane.rowIndex="2"/>
-                    <ComboBox fx:id="cmbDoctor" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Seleccione doctor" prefWidth="250"/>
+                    <ComboBox fx:id="cmbDoctor" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Seleccione mechanic" prefWidth="250"/>
 
                     <Label text="Total:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
                     <TextField fx:id="txtTotal" GridPane.rowIndex="1" GridPane.columnIndex="3" disable="true" promptText="Calculado automáticamente"/>

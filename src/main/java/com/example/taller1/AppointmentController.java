@@ -8,39 +8,39 @@ import java.time.LocalDate;
 
 public class AppointmentController {
     @FXML private DatePicker datePicker;
-    @FXML private ComboBox<Patient> cmbPatient;
-    @FXML private ComboBox<Doctor> cmbDoctor;
+    @FXML private ComboBox<Client> cmbClient;
+    @FXML private ComboBox<Mechanic> cmbMechanic;
     @FXML private TextField txtTotal;
     @FXML private TableView<Appointment> tableBills;
     @FXML private TableColumn<Appointment, String> colId;
-    @FXML private TableColumn<Appointment, String> colPatient;
-    @FXML private TableColumn<Appointment, String> colDoctor;
+    @FXML private TableColumn<Appointment, String> colClient;
+    @FXML private TableColumn<Appointment, String> colMechanic;
     @FXML private TableColumn<Appointment, String> colTotal;
     @FXML private TableColumn<Appointment, String> colDate;
     @FXML private Button btnRegister;
     @FXML private Button btnClean;
 
-    private PatientRepository patientRepository;
-    private DoctorRepository doctorRepository;
+    private ClientRepository clientRepository;
+    private MechanicRepository mechanicRepository;
     private AppointmentRepository appointmentRepository;
     private ObservableList<Appointment> listAppointments;
     private DashboardController dashboardController;
 
     @FXML
     public void initialize() {
-        patientRepository = PatientRepository.getInstance();
-        doctorRepository = DoctorRepository.getInstance();
+        clientRepository = ClientRepository.getInstance();
+        mechanicRepository = MechanicRepository.getInstance();
         appointmentRepository = AppointmentRepository.getInstance();
 
         datePicker.setValue(LocalDate.now());
 
 
-        cmbPatient.setItems(FXCollections.observableArrayList(patientRepository.getPatients()));
-        cmbDoctor.setItems(FXCollections.observableArrayList(doctorRepository.getDoctors()));
+        cmbClient.setItems(FXCollections.observableArrayList(clientRepository.getClients()));
+        cmbMechanic.setItems(FXCollections.observableArrayList(mechanicRepository.getMechanics()));
 
         colId.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getId()));
-        colPatient.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getPatient().getName()));
-        colDoctor.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getDoctor().getName()));
+        colClient.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getClient().getName()));
+        colMechanic.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getMechanic().getName()));
         colTotal.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.format("$%,.0f", cellData.getValue().getTotal())));
         colDate.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getDate().toString()));
 
@@ -59,7 +59,7 @@ public class AppointmentController {
 
     private void configureEvents() {
 
-        cmbDoctor.setOnAction(event -> {
+        cmbMechanic.setOnAction(event -> {
             calculateTotal();
         });
 
@@ -69,13 +69,13 @@ public class AppointmentController {
     }
 
     private void calculateTotal() {
-        Doctor doctor = cmbDoctor.getValue();
-        if (doctor != null) {
+        Mechanic mechanic = cmbMechanic.getValue();
+        if (mechanic != null) {
 
             double basePrice = 100000.0;
 
 
-            switch (doctor.getSpecialty()) {
+            switch (mechanic.getSpecialty()) {
                 case "Cardiología":
                     basePrice = 150000.0;
                     break;
@@ -100,12 +100,12 @@ public class AppointmentController {
         if (!validFields()) return;
 
         try {
-            Patient patient = cmbPatient.getValue();
-            Doctor doctor = cmbDoctor.getValue();
+            Client client = cmbClient.getValue();
+            Mechanic mechanic = cmbMechanic.getValue();
             LocalDate date = datePicker.getValue();
 
             String billId = appointmentRepository.generateNewId();
-            Appointment newAppointment = new Appointment(billId, patient, doctor, date);
+            Appointment newAppointment = new Appointment(billId, client, mechanic, date);
             appointmentRepository.addBill(newAppointment);
 
             showAlert("Éxito", "Factura registrada correctamente\nTotal: " + txtTotal.getText(), Alert.AlertType.INFORMATION);
@@ -123,21 +123,21 @@ public class AppointmentController {
     }
 
     private void cleanForm() {
-        cmbPatient.setValue(null);
-        cmbDoctor.setValue(null);
+        cmbClient.setValue(null);
+        cmbMechanic.setValue(null);
         datePicker.setValue(LocalDate.now());
         txtTotal.clear();
     }
 
     private boolean validFields() {
-        if (cmbPatient.getValue() == null) {
+        if (cmbClient.getValue() == null) {
             showAlert("Error", "Seleccione un paciente", Alert.AlertType.WARNING);
-            cmbPatient.requestFocus();
+            cmbClient.requestFocus();
             return false;
         }
-        if (cmbDoctor.getValue() == null) {
+        if (cmbMechanic.getValue() == null) {
             showAlert("Error", "Seleccione un doctor", Alert.AlertType.WARNING);
-            cmbDoctor.requestFocus();
+            cmbMechanic.requestFocus();
             return false;
         }
         if (datePicker.getValue() == null) {

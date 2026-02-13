@@ -5,43 +5,42 @@ import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class DoctorController {
+public class ClientController {
     @FXML private TextField txtDocument;
     @FXML private TextField txtName;
     @FXML private TextField txtPhone;
     @FXML private TextField txtEmail;
     @FXML private TextField txtAge;
-    @FXML private TextField txtSpecialty;
-    @FXML private TableView<Doctor> tableDoctors;
-    @FXML private TableColumn<Doctor, String> colDocument;
-    @FXML private TableColumn<Doctor, String> colName;
-    @FXML private TableColumn<Doctor, String> colPhone;
-    @FXML private TableColumn<Doctor, String> colEmail;
-    @FXML private TableColumn<Doctor, String> colAge;
-    @FXML private TableColumn<Doctor, String> colSpecialty;
+    @FXML private TextField txtEps;
+    @FXML private TableView<Client> tableClients;
+    @FXML private TableColumn<Client, String> colDocument;
+    @FXML private TableColumn<Client, String> colName;
+    @FXML private TableColumn<Client, String> colPhone;
+    @FXML private TableColumn<Client, String> colEmail;
+    @FXML private TableColumn<Client, String> colAge;
+    @FXML private TableColumn<Client, String> colEps;
     @FXML private Button btnSave;
     @FXML private Button btnUpdate;
     @FXML private Button btnDelete;
     @FXML private Button btnClean;
 
-    private DoctorRepository doctorRepository;
-    private ObservableList<Doctor> listDoctors;
+    private ClientRepository clientRepository;
+    private ObservableList<Client> listClients;
     private DashboardController dashboardController;
-    private Doctor doctorSelect;
+    private Client clientSelect;
 
     @FXML
     public void initialize() {
-        doctorRepository = DoctorRepository.getInstance();
-
+        clientRepository = ClientRepository.getInstance();
 
         colDocument.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getDocument()));
         colName.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getName()));
         colPhone.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getPhone()));
         colEmail.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getEmail()));
         colAge.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getAge())));
-        colSpecialty.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getSpecialty()));
+        colEps.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getEps()));
 
-        loadDoctors();
+        loadClients();
         configureSelectTable();
     }
 
@@ -49,28 +48,28 @@ public class DoctorController {
         this.dashboardController = dashboardController;
     }
 
-    private void loadDoctors() {
-        listDoctors = FXCollections.observableArrayList(doctorRepository.getDoctors());
-        tableDoctors.setItems(listDoctors);
+    private void loadClients() {
+        listClients = FXCollections.observableArrayList(clientRepository.getClients());
+        tableClients.setItems(listClients);
     }
 
     private void configureSelectTable() {
-        tableDoctors.getSelectionModel().selectedItemProperty().addListener(
+        tableClients.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     if (newValue != null) {
-                        selectDoctor(newValue);
+                        selectCliente(newValue);
                     }
                 });
     }
 
-    private void selectDoctor(Doctor doctor) {
-        doctorSelect = doctor;
-        txtDocument.setText(doctor.getDocument());
-        txtName.setText(doctor.getName());
-        txtPhone.setText(doctor.getPhone());
-        txtEmail.setText(doctor.getEmail());
-        txtAge.setText(String.valueOf(doctor.getAge()));
-        txtSpecialty.setText(doctor.getSpecialty());
+    private void selectCliente(Client client) {
+        clientSelect = client;
+        txtDocument.setText(client.getDocument());
+        txtName.setText(client.getName());
+        txtPhone.setText(client.getPhone());
+        txtEmail.setText(client.getEmail());
+        txtAge.setText(String.valueOf(client.getAge()));
+        txtEps.setText(client.getEps());
 
         btnSave.setDisable(true);
         btnUpdate.setDisable(false);
@@ -87,30 +86,30 @@ public class DoctorController {
             String phone = txtPhone.getText().trim();
             String email = txtEmail.getText().trim();
             int age = Integer.parseInt(txtAge.getText().trim());
-            String specialty = txtSpecialty.getText().trim();
+            String eps = txtEps.getText().trim();
 
-            if (doctorRepository.searchDoctorPerDocument(document) != null) {
-                showAlert("Error", "Ya existe un doctor con este documento", Alert.AlertType.ERROR);
+            if (clientRepository.searchClientPerDocument(document) != null) {
+                showAlert("Error", "Ya existe un paciente con este documento", Alert.AlertType.ERROR);
                 return;
             }
 
-            Doctor newDoctor = new Doctor(document, name, phone, email, age, specialty);
-            doctorRepository.addDoctor(newDoctor);
+            Client newClient = new Client(document, name, phone, email, age, eps);
+            clientRepository.addClient(newClient);
 
-            showAlert("Éxito", "Doctor registrado correctamente", Alert.AlertType.INFORMATION);
+            showAlert("Éxito", "Paciente registrado correctamente", Alert.AlertType.INFORMATION);
             cleanForm();
-            loadDoctors();
+            loadClients();
 
         } catch (NumberFormatException e) {
             showAlert("Error", "La edad debe ser un número válido", Alert.AlertType.ERROR);
         } catch (Exception e) {
-            showAlert("Error", "Error al registrar doctor: " + e.getMessage(), Alert.AlertType.ERROR);
+            showAlert("Error", "Error al registrar paciente: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
     @FXML
     private void onUpdate() {
-        if (doctorSelect == null || !validFields()) return;
+        if (clientSelect == null || !validFields()) return;
 
         try {
             String document = txtDocument.getText().trim();
@@ -118,37 +117,37 @@ public class DoctorController {
             String phone = txtPhone.getText().trim();
             String email = txtEmail.getText().trim();
             int age = Integer.parseInt(txtAge.getText().trim());
-            String specialty = txtSpecialty.getText().trim();
+            String eps = txtEps.getText().trim();
 
-            Doctor doctorUpdate = new Doctor(document, name, phone, email, age, specialty);
-            doctorRepository.updateDoctor(doctorUpdate);
+            Client clientUpdate = new Client(document, name, phone, email, age, eps);
+            clientRepository.updateClient(clientUpdate);
 
-            showAlert("Éxito", "Doctor actualizado correctamente", Alert.AlertType.INFORMATION);
+            showAlert("Éxito", "Paciente actualizado correctamente", Alert.AlertType.INFORMATION);
             cleanForm();
-            loadDoctors();
+            loadClients();
 
         } catch (NumberFormatException e) {
             showAlert("Error", "La edad debe ser un número válido", Alert.AlertType.ERROR);
         } catch (Exception e) {
-            showAlert("Error", "Error al actualizar doctor: " + e.getMessage(), Alert.AlertType.ERROR);
+            showAlert("Error", "Error al actualizar paciente: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
     @FXML
     private void onDelete() {
-        if (doctorSelect == null) return;
+        if (clientSelect == null) return;
 
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
         confirmation.setTitle("Confirmar eliminación");
-        confirmation.setHeaderText("¿Está seguro de eliminar este doctor?");
-        confirmation.setContentText("Doctor: " + doctorSelect.getName() + " - " + doctorSelect.getDocument());
+        confirmation.setHeaderText("¿Está seguro de eliminar este paciente?");
+        confirmation.setContentText("Paciente: " + clientSelect.getName() + " - " + clientSelect.getDocument());
 
         confirmation.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                doctorRepository.deleteDoctor(doctorSelect.getDocument());
-                showAlert("Éxito", "Doctor eliminado correctamente", Alert.AlertType.INFORMATION);
+                clientRepository.deleteClient(clientSelect.getDocument());
+                showAlert("Éxito", "Paciente eliminado correctamente", Alert.AlertType.INFORMATION);
                 cleanForm();
-                loadDoctors();
+                loadClients();
             }
         });
     }
@@ -164,9 +163,9 @@ public class DoctorController {
         txtPhone.clear();
         txtEmail.clear();
         txtAge.clear();
-        txtSpecialty.clear();
-        doctorSelect = null;
-        tableDoctors.getSelectionModel().clearSelection();
+        txtEps.clear();
+        clientSelect = null;
+        tableClients.getSelectionModel().clearSelection();
 
         btnSave.setDisable(false);
         btnUpdate.setDisable(true);
@@ -182,11 +181,6 @@ public class DoctorController {
         if (txtName.getText().trim().isEmpty()) {
             showAlert("Error", "El nombre es obligatorio", Alert.AlertType.WARNING);
             txtName.requestFocus();
-            return false;
-        }
-        if (txtSpecialty.getText().trim().isEmpty()) {
-            showAlert("Error", "La especialidad es obligatoria", Alert.AlertType.WARNING);
-            txtSpecialty.requestFocus();
             return false;
         }
         if (txtAge.getText().trim().isEmpty()) {
