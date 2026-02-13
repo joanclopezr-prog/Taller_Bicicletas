@@ -1,4 +1,4 @@
-package com.example.parcial3;
+package com.example.taller1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,9 @@ public class MechanicRepository {
     private MechanicRepository() {
         mechanics = new ArrayList<>();
 
-        mechanics.add(new Mechanic("12345678", "Dr. Carlos Martínez", "3001234567", "carlos.martinez@hospital.com", 45, "Cardiología"));
-        mechanics.add(new Mechanic("87654321", "Dra. Ana López", "3007654321", "ana.lopez@hospital.com", 38, "Pediatría"));
-        mechanics.add(new Mechanic("11223344", "Dr. Roberto García", "3001122334", "roberto.garcia@hospital.com", 52, "Neurología"));
+        mechanics.add(new Mechanic("12345678", "M. Carlos Martínez", "3001234567", "carlos.martinez@taller.com", 45, "Frenos"));
+        mechanics.add(new Mechanic("87654321", "M. Ana López", "3007654321", "ana.lopez@taller.com", 38, "Transmisión"));
+        mechanics.add(new Mechanic("11223344", "M. Roberto García", "3001122334", "roberto.garcia@taller.com", 52, "Eléctrica"));
     }
 
     public static MechanicRepository getInstance() {

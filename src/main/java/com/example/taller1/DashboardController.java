@@ -1,4 +1,4 @@
-package com.example.parcial3;
+package com.example.taller1;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+
 import java.io.IOException;
 
 public class DashboardController {
@@ -17,9 +18,9 @@ public class DashboardController {
     @FXML
     private Button btnClients;
     @FXML
-    private Button btnProducts;
+    private Button btnMechanics;
     @FXML
-    private Button btnSales;
+    private Button btnAppointments;
 
     @FXML
     protected void onClientsClick() {
@@ -27,59 +28,60 @@ public class DashboardController {
     }
 
     @FXML
-    protected void onProductsClick() {
-        loadProducts();
+    protected void onMechanicsClick() {
+        loadMechanics();
     }
 
     @FXML
-    protected void onSalesClick() {
-        loadSales();
+    protected void onAppointmentsClick() {
+        loadAppointments();
     }
 
     public void loadClients() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("patient.fxml"));
-            Parent clientes = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("client.fxml"));
+            Parent clients = loader.load();
 
             ClientController controller = loader.getController();
             controller.setDashboardController(this);
 
             mainContent.getChildren().clear();
-            mainContent.getChildren().add(clientes);
+            mainContent.getChildren().add(clients);
 
         } catch (IOException e) {
-            showAlert("Error", "No se pudo cargar el módulo de pacientes", Alert.AlertType.ERROR);
+            showAlert("Error", "No se pudo cargar el módulo de Clientes", Alert.AlertType.ERROR);
             e.printStackTrace();
         }
     }
 
-    public void loadProducts() {
+    public void loadMechanics() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("doctor.fxml"));
-            Parent productos = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("mechanic.fxml"));
+            Parent mechanics = loader.load();
+
 
             MechanicController controller = loader.getController();
             controller.setDashboardController(this);
 
             mainContent.getChildren().clear();
-            mainContent.getChildren().add(productos);
+            mainContent.getChildren().add(mechanics);
 
         } catch (IOException e) {
-            showAlert("Error", "No se pudo cargar el módulo de doctores", Alert.AlertType.ERROR);
+            showAlert("Error", "No se pudo cargar el módulo de Mecánicos", Alert.AlertType.ERROR);
             e.printStackTrace();
         }
     }
 
-    public void loadSales() {
+    public void loadAppointments() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("appointment.fxml"));
-            Parent sales = loader.load();
+            Parent appointments = loader.load();
 
             AppointmentController controller = loader.getController();
             controller.setDashboardController(this);
 
             mainContent.getChildren().clear();
-            mainContent.getChildren().add(sales);
+            mainContent.getChildren().add(appointments);
 
         } catch (IOException e) {
             showAlert("Error", "No se pudo cargar el módulo de citas", Alert.AlertType.ERROR);

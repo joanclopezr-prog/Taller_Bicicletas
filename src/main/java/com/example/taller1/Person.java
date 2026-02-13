@@ -1,4 +1,4 @@
-package com.example.parcial3;
+package com.example.taller1;
 
 public class Person {
     private int age;

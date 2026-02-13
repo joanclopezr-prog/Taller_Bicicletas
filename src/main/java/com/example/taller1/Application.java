@@ -1,4 +1,4 @@
-package com.example.parcial3;
+package com.example.taller1;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,7 +10,7 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("dashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Sistema de Gestión - Clientes, Mecanicos y Facturación");
+        stage.setTitle("Sistema de Gestión - Clientes, Mecánicos y Facturación");
         stage.setScene(scene);
         stage.show();
     }

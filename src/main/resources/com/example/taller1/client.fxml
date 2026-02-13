@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.parcial3.ClientController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.taller1.ClientController">
     <children>
-        <Label layoutX="300.0" layoutY="20.0" text="Gestión de Pacientes">
+        <Label layoutX="300.0" layoutY="20.0" text="Gestión de Clientes">
             <font>
                 <Font name="Book Antiqua Bold" size="28.0" />
             </font>
@@ -14,7 +14,7 @@
 
 
         <VBox layoutX="50.0" layoutY="70.0" prefHeight="250.0" prefWidth="300.0" spacing="10" style="-fx-padding: 15; -fx-background-color: #f8f9fa; -fx-background-radius: 5;">
-            <Label text="Datos del Paciente" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label text="Datos del Clientes" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
 
             <GridPane hgap="8" vgap="8">
                 <columnConstraints>
@@ -38,26 +38,24 @@
                     <Label text="Edad:" GridPane.rowIndex="4"/>
                     <TextField fx:id="txtAge" GridPane.rowIndex="4" GridPane.columnIndex="1" promptText="25"/>
 
-                    <Label text="EPS:" GridPane.rowIndex="5"/>
-                    <TextField fx:id="txtEps" GridPane.rowIndex="5" GridPane.columnIndex="1" promptText="Nombre de la EPS"/>
                 </children>
             </GridPane>
 
             <HBox spacing="10" alignment="CENTER">
                 <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onSave" text=" Guardar"
-                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold;"/>
                 <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#onUpdate" text=" Actualizar"
-                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;" disable="true"/>
+                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold;" disable="true"/>
                 <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#onDelete" text=" Eliminar"
-                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" disable="true"/>
+                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold;" disable="true"/>
                 <Button fx:id="btnClean" mnemonicParsing="false" onAction="#onClean" text=" Limpiar"
-                        style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold;"/>
             </HBox>
         </VBox>
 
 
         <VBox layoutX="370.0" layoutY="70.0" prefHeight="500.0" prefWidth="400.0" spacing="10">
-            <Label text="Pacientes Registrados" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label text="Clientes Registrados" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
             <TableView fx:id="tableClients" prefHeight="450.0" prefWidth="400.0">
                 <columns>
                     <TableColumn fx:id="colDocument" text="Documento" prefWidth="80"/>

@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.parcial3.DashboardController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.taller1.DashboardController">
     <children>
 
-        <VBox fx:id="menu" layoutX="14.0" layoutY="14.0" prefHeight="572.0" prefWidth="200.0" style="-fx-background-color: #2c3e50; -fx-background-radius: 10;">
+        <VBox fx:id="menu" layoutX="14.0" layoutY="14.0" prefHeight="572.0" prefWidth="200.0" style="-fx-background-color: #722F37; -fx-background-radius: 10;">
             <children>
                 <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="MENÚ" textAlignment="CENTER">
                     <font>
@@ -21,7 +21,7 @@
                     </padding>
                 </Label>
 
-                <Button fx:id="btnClients" mnemonicParsing="false" onAction="#onClientsClick" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Paciente">
+                <Button fx:id="btnClients" mnemonicParsing="false" onAction="#onClientsClick" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: white; -fx-text-fill: #722F37; -fx-font-weight: bold; -fx-background-radius: 5;" text="Clientes">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -30,7 +30,7 @@
                     </VBox.margin>
                 </Button>
 
-                <Button fx:id="btnProducts" mnemonicParsing="false" onAction="#onProductsClick" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Doctores">
+                <Button fx:id="btnMechanics" mnemonicParsing="false" onAction="#onMechanicsClick" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: white; -fx-text-fill: #722F37; -fx-font-weight: bold; -fx-background-radius: 5;" text="Mecánicos">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -39,7 +39,7 @@
                     </VBox.margin>
                 </Button>
 
-                <Button fx:id="btnSales" mnemonicParsing="false" onAction="#onSalesClick" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Citas">
+                <Button fx:id="btnAppointments" mnemonicParsing="false" onAction="#onAppointmentsClick" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: white; -fx-text-fill: #722F37; -fx-font-weight: bold; -fx-background-radius: 5;" text="Citas">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -55,12 +55,12 @@
 
         <AnchorPane fx:id="mainContent" layoutX="230.0" layoutY="14.0" prefHeight="572.0" prefWidth="656.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 10;">
             <children>
-                <Label layoutX="150.0" layoutY="250.0" style="-fx-text-fill: #2c3e50;" text="Sistema de Gestión Hospitalaria">
+                <Label layoutX="150.0" layoutY="250.0" style="-fx-text-fill: #2c3e50;" text="Sistema de Gestión Taller">
                     <font>
                         <Font name="Book Antiqua" size="28.0" />
                     </font>
                 </Label>
-                <Label layoutX="220.0" layoutY="300.0" style="-fx-text-fill: #7f8c8d;" text="Pacientes - Doctores - Citas">
+                <Label layoutX="220.0" layoutY="300.0" style="-fx-text-fill: #7f8c8d;" text="Clientes - Mecánicos - Citas">
                     <font>
                         <Font size="16.0" />
                     </font>

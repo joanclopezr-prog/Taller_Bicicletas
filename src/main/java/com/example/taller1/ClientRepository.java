@@ -1,4 +1,4 @@
-package com.example.parcial3;
+package com.example.taller1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ public class ClientRepository {
     private ClientRepository() {
         clients = new ArrayList<>();
 
-        clients.add(new Client("Medimas", "1090272139", "Alejandro Campo", "3224229356", "alejo@gmail.com", 20));
-        clients.add(new Client("SaludTotal", "108425322", "Danilo Ladino", "3224229358", "danilo@gmail.com", 20));
+        clients.add(new Client( "1090272139", "Alejandro Campo", "3224229356", "alejo@gmail.com", 20));
+        clients.add(new Client("108425322", "Danilo Ladino", "3224229358", "danilo@gmail.com", 20));
     }
 
     public static ClientRepository getInstance() {

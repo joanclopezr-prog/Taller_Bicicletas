@@ -1,4 +1,4 @@
-package com.example.parcial3;
+package com.example.taller1;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -76,13 +76,16 @@ public class AppointmentController {
 
 
             switch (mechanic.getSpecialty()) {
-                case "Cardiología":
+                case "Frenos":
                     basePrice = 150000.0;
                     break;
-                case "Neurología":
+                case "Transmisión":
                     basePrice = 180000.0;
                     break;
-                case "Pediatría":
+                case "Suspensión":
+                    basePrice = 120000.0;
+                    break;
+                case "Eléctrica":
                     basePrice = 120000.0;
                     break;
                 default:
@@ -131,12 +134,12 @@ public class AppointmentController {
 
     private boolean validFields() {
         if (cmbClient.getValue() == null) {
-            showAlert("Error", "Seleccione un paciente", Alert.AlertType.WARNING);
+            showAlert("Error", "Seleccione un Cliente", Alert.AlertType.WARNING);
             cmbClient.requestFocus();
             return false;
         }
         if (cmbMechanic.getValue() == null) {
-            showAlert("Error", "Seleccione un doctor", Alert.AlertType.WARNING);
+            showAlert("Error", "Seleccione un Mecánico", Alert.AlertType.WARNING);
             cmbMechanic.requestFocus();
             return false;
         }

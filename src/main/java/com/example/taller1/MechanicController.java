@@ -1,4 +1,4 @@
-package com.example.parcial3;
+package com.example.taller1;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -90,21 +90,21 @@ public class MechanicController {
             String specialty = txtSpecialty.getText().trim();
 
             if (mechanicRepository.searchMechanicPerDocument(document) != null) {
-                showAlert("Error", "Ya existe un doctor con este documento", Alert.AlertType.ERROR);
+                showAlert("Error", "Ya existe un Mecánico con este documento", Alert.AlertType.ERROR);
                 return;
             }
 
             Mechanic newMechanic = new Mechanic(document, name, phone, email, age, specialty);
             mechanicRepository.addMechanic(newMechanic);
 
-            showAlert("Éxito", "Mechanic registrado correctamente", Alert.AlertType.INFORMATION);
+            showAlert("Éxito", "Mecánico registrado correctamente", Alert.AlertType.INFORMATION);
             cleanForm();
             loadMechanics();
 
         } catch (NumberFormatException e) {
             showAlert("Error", "La edad debe ser un número válido", Alert.AlertType.ERROR);
         } catch (Exception e) {
-            showAlert("Error", "Error al registrar doctor: " + e.getMessage(), Alert.AlertType.ERROR);
+            showAlert("Error", "Error al registrar Mecánico: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
@@ -123,14 +123,14 @@ public class MechanicController {
             Mechanic mechanicUpdate = new Mechanic(document, name, phone, email, age, specialty);
             mechanicRepository.updateMechanic(mechanicUpdate);
 
-            showAlert("Éxito", "Mechanic actualizado correctamente", Alert.AlertType.INFORMATION);
+            showAlert("Éxito", "Mecánico actualizado correctamente", Alert.AlertType.INFORMATION);
             cleanForm();
             loadMechanics();
 
         } catch (NumberFormatException e) {
             showAlert("Error", "La edad debe ser un número válido", Alert.AlertType.ERROR);
         } catch (Exception e) {
-            showAlert("Error", "Error al actualizar doctor: " + e.getMessage(), Alert.AlertType.ERROR);
+            showAlert("Error", "Error al actualizar Mecánico: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
@@ -140,13 +140,13 @@ public class MechanicController {
 
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
         confirmation.setTitle("Confirmar eliminación");
-        confirmation.setHeaderText("¿Está seguro de eliminar este doctor?");
-        confirmation.setContentText("Mechanic: " + mechanicSelect.getName() + " - " + mechanicSelect.getDocument());
+        confirmation.setHeaderText("¿Está seguro de eliminar este Mecánico?");
+        confirmation.setContentText("Mecánico: " + mechanicSelect.getName() + " - " + mechanicSelect.getDocument());
 
         confirmation.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 mechanicRepository.deleteMechanic(mechanicSelect.getDocument());
-                showAlert("Éxito", "Mechanic eliminado correctamente", Alert.AlertType.INFORMATION);
+                showAlert("Éxito", "Mecánico eliminado correctamente", Alert.AlertType.INFORMATION);
                 cleanForm();
                 loadMechanics();
             }

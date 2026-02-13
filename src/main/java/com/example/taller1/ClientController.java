@@ -1,4 +1,4 @@
-package com.example.parcial3;
+package com.example.taller1;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,14 +11,12 @@ public class ClientController {
     @FXML private TextField txtPhone;
     @FXML private TextField txtEmail;
     @FXML private TextField txtAge;
-    @FXML private TextField txtEps;
     @FXML private TableView<Client> tableClients;
     @FXML private TableColumn<Client, String> colDocument;
     @FXML private TableColumn<Client, String> colName;
     @FXML private TableColumn<Client, String> colPhone;
     @FXML private TableColumn<Client, String> colEmail;
     @FXML private TableColumn<Client, String> colAge;
-    @FXML private TableColumn<Client, String> colEps;
     @FXML private Button btnSave;
     @FXML private Button btnUpdate;
     @FXML private Button btnDelete;
@@ -38,7 +36,6 @@ public class ClientController {
         colPhone.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getPhone()));
         colEmail.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getEmail()));
         colAge.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(String.valueOf(cellData.getValue().getAge())));
-        colEps.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getEps()));
 
         loadClients();
         configureSelectTable();
@@ -69,7 +66,7 @@ public class ClientController {
         txtPhone.setText(client.getPhone());
         txtEmail.setText(client.getEmail());
         txtAge.setText(String.valueOf(client.getAge()));
-        txtEps.setText(client.getEps());
+
 
         btnSave.setDisable(true);
         btnUpdate.setDisable(false);
@@ -86,17 +83,17 @@ public class ClientController {
             String phone = txtPhone.getText().trim();
             String email = txtEmail.getText().trim();
             int age = Integer.parseInt(txtAge.getText().trim());
-            String eps = txtEps.getText().trim();
+
 
             if (clientRepository.searchClientPerDocument(document) != null) {
-                showAlert("Error", "Ya existe un paciente con este documento", Alert.AlertType.ERROR);
+                showAlert("Error", "Ya existe un cliente con este documento", Alert.AlertType.ERROR);
                 return;
             }
 
-            Client newClient = new Client(document, name, phone, email, age, eps);
+            Client newClient = new Client(document, name, phone, email, age);
             clientRepository.addClient(newClient);
 
-            showAlert("Éxito", "Paciente registrado correctamente", Alert.AlertType.INFORMATION);
+            showAlert("Éxito", "Cliente registrado correctamente", Alert.AlertType.INFORMATION);
             cleanForm();
             loadClients();
 
@@ -117,12 +114,11 @@ public class ClientController {
             String phone = txtPhone.getText().trim();
             String email = txtEmail.getText().trim();
             int age = Integer.parseInt(txtAge.getText().trim());
-            String eps = txtEps.getText().trim();
 
-            Client clientUpdate = new Client(document, name, phone, email, age, eps);
+            Client clientUpdate = new Client(document, name, phone, email, age);
             clientRepository.updateClient(clientUpdate);
 
-            showAlert("Éxito", "Paciente actualizado correctamente", Alert.AlertType.INFORMATION);
+            showAlert("Éxito", "Cliente actualizado correctamente", Alert.AlertType.INFORMATION);
             cleanForm();
             loadClients();
 
@@ -139,13 +135,13 @@ public class ClientController {
 
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
         confirmation.setTitle("Confirmar eliminación");
-        confirmation.setHeaderText("¿Está seguro de eliminar este paciente?");
-        confirmation.setContentText("Paciente: " + clientSelect.getName() + " - " + clientSelect.getDocument());
+        confirmation.setHeaderText("¿Está seguro de eliminar este Cliente?");
+        confirmation.setContentText("Cliente: " + clientSelect.getName() + " - " + clientSelect.getDocument());
 
         confirmation.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 clientRepository.deleteClient(clientSelect.getDocument());
-                showAlert("Éxito", "Paciente eliminado correctamente", Alert.AlertType.INFORMATION);
+                showAlert("Éxito", "Cliente eliminado correctamente", Alert.AlertType.INFORMATION);
                 cleanForm();
                 loadClients();
             }
@@ -163,7 +159,6 @@ public class ClientController {
         txtPhone.clear();
         txtEmail.clear();
         txtAge.clear();
-        txtEps.clear();
         clientSelect = null;
         tableClients.getSelectionModel().clearSelection();
 

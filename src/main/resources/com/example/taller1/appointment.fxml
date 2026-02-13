@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.parcial3.AppointmentController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.taller1.AppointmentController">
     <children>
         <Label layoutX="300.0" layoutY="20.0" text="Gestión de Facturas">
             <font>
@@ -28,11 +28,11 @@
                     <Label text="Fecha:" GridPane.rowIndex="0"/>
                     <DatePicker fx:id="datePicker" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="Seleccione fecha"/>
 
-                    <Label text="Paciente:" GridPane.rowIndex="1"/>
-                    <ComboBox fx:id="cmbPatient" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Seleccione paciente" prefWidth="250"/>
+                    <Label text="Cliente:" GridPane.rowIndex="1"/>
+                    <ComboBox fx:id="cmbClient" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Seleccione Cliente" prefWidth="250"/>
 
-                    <Label text="Doctor:" GridPane.rowIndex="2"/>
-                    <ComboBox fx:id="cmbDoctor" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Seleccione mechanic" prefWidth="250"/>
+                    <Label text="Mecánico:" GridPane.rowIndex="2"/>
+                    <ComboBox fx:id="cmbMechanic" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Seleccione Mecánico" prefWidth="250"/>
 
                     <Label text="Total:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
                     <TextField fx:id="txtTotal" GridPane.rowIndex="1" GridPane.columnIndex="3" disable="true" promptText="Calculado automáticamente"/>
@@ -41,9 +41,9 @@
 
             <HBox spacing="10" alignment="CENTER">
                 <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#onRegister" text=" Registrar Factura"
-                        style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold;"/>
                 <Button fx:id="btnClean" mnemonicParsing="false" onAction="#onClean" text=" Limpiar"
-                        style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold;"/>
             </HBox>
         </VBox>
 
@@ -53,8 +53,8 @@
             <TableView fx:id="tableBills" prefHeight="200.0" prefWidth="700.0">
                 <columns>
                     <TableColumn fx:id="colId" text="ID Factura" prefWidth="80"/>
-                    <TableColumn fx:id="colPatient" text="Paciente" prefWidth="150"/>
-                    <TableColumn fx:id="colDoctor" text="Doctor" prefWidth="150"/>
+                    <TableColumn fx:id="colClient" text="Cliente" prefWidth="150"/>
+                    <TableColumn fx:id="colMechanic" text="Mecánico" prefWidth="150"/>
                     <TableColumn fx:id="colTotal" text="Total" prefWidth="100"/>
                     <TableColumn fx:id="colDate" text="Fecha" prefWidth="100"/>
                 </columns>
