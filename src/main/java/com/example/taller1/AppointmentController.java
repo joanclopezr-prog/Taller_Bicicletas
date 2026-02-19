@@ -34,7 +34,6 @@ public class AppointmentController {
 
         datePicker.setValue(LocalDate.now());
 
-
         cmbClient.setItems(FXCollections.observableArrayList(clientRepository.getClients()));
         cmbMechanic.setItems(FXCollections.observableArrayList(mechanicRepository.getMechanics()));
 
@@ -58,40 +57,21 @@ public class AppointmentController {
     }
 
     private void configureEvents() {
-
-        cmbMechanic.setOnAction(event -> {
-            calculateTotal();
-        });
-
-        datePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
-            calculateTotal();
-        });
+        cmbMechanic.setOnAction(event -> calculateTotal());
+        datePicker.valueProperty().addListener((observable, oldValue, newValue) -> calculateTotal());
     }
 
     private void calculateTotal() {
         Mechanic mechanic = cmbMechanic.getValue();
         if (mechanic != null) {
-
             double basePrice = 100000.0;
-
-
             switch (mechanic.getSpecialty()) {
-                case "Frenos":
-                    basePrice = 150000.0;
-                    break;
-                case "Transmisión":
-                    basePrice = 180000.0;
-                    break;
-                case "Suspensión":
-                    basePrice = 120000.0;
-                    break;
-                case "Eléctrica":
-                    basePrice = 120000.0;
-                    break;
-                default:
-                    basePrice = 100000.0;
+                case "Frenos": basePrice = 150000.0; break;
+                case "Transmisión": basePrice = 180000.0; break;
+                case "Suspensión": basePrice = 120000.0; break;
+                case "Eléctrica": basePrice = 120000.0; break;
+                default: basePrice = 100000.0;
             }
-
             txtTotal.setText(String.format("$%,.0f", basePrice));
         } else {
             txtTotal.clear();
@@ -114,7 +94,6 @@ public class AppointmentController {
             showAlert("Éxito", "Factura registrada correctamente\nTotal: " + txtTotal.getText(), Alert.AlertType.INFORMATION);
             cleanForm();
             loadBills();
-
         } catch (Exception e) {
             showAlert("Error", "Error al registrar factura: " + e.getMessage(), Alert.AlertType.ERROR);
         }

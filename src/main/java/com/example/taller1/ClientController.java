@@ -54,19 +54,18 @@ public class ClientController {
         tableClients.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     if (newValue != null) {
-                        selectCliente(newValue);
+                        selectClient(newValue);
                     }
                 });
     }
 
-    private void selectCliente(Client client) {
+    private void selectClient(Client client) {
         clientSelect = client;
         txtDocument.setText(client.getDocument());
         txtName.setText(client.getName());
         txtPhone.setText(client.getPhone());
         txtEmail.setText(client.getEmail());
         txtAge.setText(String.valueOf(client.getAge()));
-
 
         btnSave.setDisable(true);
         btnUpdate.setDisable(false);
@@ -84,7 +83,6 @@ public class ClientController {
             String email = txtEmail.getText().trim();
             int age = Integer.parseInt(txtAge.getText().trim());
 
-
             if (clientRepository.searchClientPerDocument(document) != null) {
                 showAlert("Error", "Ya existe un cliente con este documento", Alert.AlertType.ERROR);
                 return;
@@ -100,7 +98,7 @@ public class ClientController {
         } catch (NumberFormatException e) {
             showAlert("Error", "La edad debe ser un número válido", Alert.AlertType.ERROR);
         } catch (Exception e) {
-            showAlert("Error", "Error al registrar paciente: " + e.getMessage(), Alert.AlertType.ERROR);
+            showAlert("Error", "Error al registrar cliente: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
@@ -125,7 +123,7 @@ public class ClientController {
         } catch (NumberFormatException e) {
             showAlert("Error", "La edad debe ser un número válido", Alert.AlertType.ERROR);
         } catch (Exception e) {
-            showAlert("Error", "Error al actualizar paciente: " + e.getMessage(), Alert.AlertType.ERROR);
+            showAlert("Error", "Error al actualizar cliente: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
