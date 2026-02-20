@@ -18,8 +18,8 @@ public class Appointment {
     }
 
     private double calculateTotal() {
-
-        return 100000.0;
+        // Lógica de cálculo según especialidad del mecánico
+        return 100000.0; // Placeholder
     }
 
     public String getId() { return id; }

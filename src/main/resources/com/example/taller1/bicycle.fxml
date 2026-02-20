@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.taller1.BicycleController">
+    <children>
+        <Label layoutX="300.0" layoutY="20.0" text="Gestión de Bicicletas">
+            <font>
+                <Font name="Book Antiqua Bold" size="28.0" />
+            </font>
+        </Label>
+
+        <VBox layoutX="30.0" layoutY="70.0" prefHeight="320.0" prefWidth="380.0" spacing="10" style="-fx-padding: 15; -fx-background-color: #f8f9fa; -fx-background-radius: 5;">
+            <Label text="Datos de la Bicicleta" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+            <GridPane hgap="8" vgap="8">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="100"/>
+                    <ColumnConstraints prefWidth="240"/>
+                </columnConstraints>
+
+                <children>
+                    <Label text="Número de Serie:" GridPane.rowIndex="0"/>
+                    <TextField fx:id="txtSerialNumber" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="SN123456"/>
+
+                    <Label text="Marca:" GridPane.rowIndex="1"/>
+                    <TextField fx:id="txtBrand" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Trek, Specialized, etc."/>
+
+                    <Label text="Tipo:" GridPane.rowIndex="2"/>
+                    <ComboBox fx:id="cmbType" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Seleccione tipo" prefWidth="240"/>
+
+                    <Label text="Color:" GridPane.rowIndex="3"/>
+                    <TextField fx:id="txtColor" GridPane.rowIndex="3" GridPane.columnIndex="1" promptText="Rojo, Azul, etc."/>
+
+                    <Label text="Año:" GridPane.rowIndex="4"/>
+                    <TextField fx:id="txtYear" GridPane.rowIndex="4" GridPane.columnIndex="1" promptText="2023"/>
+
+                    <Label text="Propietario:" GridPane.rowIndex="5"/>
+                    <ComboBox fx:id="cmbOwner" GridPane.rowIndex="5" GridPane.columnIndex="1" promptText="Seleccione cliente" prefWidth="240"/>
+                </children>
+            </GridPane>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onSave" text=" Guardar"
+                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#onUpdate" text=" Actualizar"
+                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold;" disable="true"/>
+                <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#onDelete" text=" Eliminar"
+                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold;" disable="true"/>
+                <Button fx:id="btnClean" mnemonicParsing="false" onAction="#onClean" text=" Limpiar"
+                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+
+        <VBox layoutX="430.0" layoutY="70.0" prefHeight="500.0" prefWidth="440.0" spacing="10">
+            <Label text="Bicicletas Registradas" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <TableView fx:id="tableBicycles" prefHeight="450.0" prefWidth="440.0">
+                <columns>
+                    <TableColumn fx:id="colSerialNumber" text="N° Serie" prefWidth="80"/>
+                    <TableColumn fx:id="colBrand" text="Marca" prefWidth="80"/>
+                    <TableColumn fx:id="colType" text="Tipo" prefWidth="70"/>
+                    <TableColumn fx:id="colColor" text="Color" prefWidth="60"/>
+                    <TableColumn fx:id="colYear" text="Año" prefWidth="50"/>
+                    <TableColumn fx:id="colOwner" text="Propietario" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </children>
+</AnchorPane>

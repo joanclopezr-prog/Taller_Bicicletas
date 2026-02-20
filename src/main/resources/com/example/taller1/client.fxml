@@ -12,9 +12,8 @@
             </font>
         </Label>
 
-
         <VBox layoutX="50.0" layoutY="70.0" prefHeight="250.0" prefWidth="300.0" spacing="10" style="-fx-padding: 15; -fx-background-color: #f8f9fa; -fx-background-radius: 5;">
-            <Label text="Datos del Clientes" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label text="Datos del Cliente" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
 
             <GridPane hgap="8" vgap="8">
                 <columnConstraints>
@@ -37,7 +36,6 @@
 
                     <Label text="Edad:" GridPane.rowIndex="4"/>
                     <TextField fx:id="txtAge" GridPane.rowIndex="4" GridPane.columnIndex="1" promptText="25"/>
-
                 </children>
             </GridPane>
 
@@ -53,7 +51,6 @@
             </HBox>
         </VBox>
 
-
         <VBox layoutX="370.0" layoutY="70.0" prefHeight="500.0" prefWidth="400.0" spacing="10">
             <Label text="Clientes Registrados" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
             <TableView fx:id="tableClients" prefHeight="450.0" prefWidth="400.0">
@@ -63,7 +60,6 @@
                     <TableColumn fx:id="colPhone" text="Teléfono" prefWidth="80"/>
                     <TableColumn fx:id="colEmail" text="Email" prefWidth="120"/>
                     <TableColumn fx:id="colAge" text="Edad" prefWidth="50"/>
-                    <TableColumn fx:id="colEps" text="EPS" prefWidth="100"/>
                 </columns>
             </TableView>
         </VBox>

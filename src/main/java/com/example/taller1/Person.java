@@ -14,6 +14,7 @@ public class Person {
         this.phone = phone;
         this.email = email;
     }
+
     public String getDocument() { return document; }
     public void setDocument(String document) { this.document = document; }
 
@@ -25,6 +26,7 @@ public class Person {
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+
     public int getAge() { return age; }
     public void setAge(int age) { this.age = age; }
 

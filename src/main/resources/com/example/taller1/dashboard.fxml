@@ -9,7 +9,6 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.taller1.DashboardController">
     <children>
-
         <VBox fx:id="menu" layoutX="14.0" layoutY="14.0" prefHeight="572.0" prefWidth="200.0" style="-fx-background-color: #722F37; -fx-background-radius: 10;">
             <children>
                 <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="MENÚ" textAlignment="CENTER">
@@ -39,7 +38,16 @@
                     </VBox.margin>
                 </Button>
 
-                <Button fx:id="btnAppointments" mnemonicParsing="false" onAction="#onAppointmentsClick" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: white; -fx-text-fill: #722F37; -fx-font-weight: bold; -fx-background-radius: 5;" text="Citas">
+                <Button fx:id="btnBicycles" mnemonicParsing="false" onAction="#onBicyclesClick" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: white; -fx-text-fill: #722F37; -fx-font-weight: bold; -fx-background-radius: 5;" text="Bicicletas">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </VBox.margin>
+                </Button>
+
+                <Button fx:id="btnAppointments" mnemonicParsing="false" onAction="#onAppointmentsClick" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: white; -fx-text-fill: #722F37; -fx-font-weight: bold; -fx-background-radius: 5;" text="Facturas">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -60,7 +68,7 @@
                         <Font name="Book Antiqua" size="28.0" />
                     </font>
                 </Label>
-                <Label layoutX="220.0" layoutY="300.0" style="-fx-text-fill: #7f8c8d;" text="Clientes - Mecánicos - Citas">
+                <Label layoutX="220.0" layoutY="300.0" style="-fx-text-fill: #7f8c8d;" text="Clientes - Mecánicos - Bicicletas - Facturas">
                     <font>
                         <Font size="16.0" />
                     </font>

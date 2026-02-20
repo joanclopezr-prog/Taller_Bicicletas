@@ -8,7 +8,6 @@ public class Mechanic extends Person {
         this.specialty = specialty;
     }
 
-
     public Mechanic(String document, String name, String specialty) {
         super(document, name, "", "", 0);
         this.specialty = specialty;

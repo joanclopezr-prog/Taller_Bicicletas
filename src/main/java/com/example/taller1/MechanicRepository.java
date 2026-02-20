@@ -9,7 +9,6 @@ public class MechanicRepository {
 
     private MechanicRepository() {
         mechanics = new ArrayList<>();
-
         mechanics.add(new Mechanic("12345678", "M. Carlos Martínez", "3001234567", "carlos.martinez@taller.com", 45, "Frenos"));
         mechanics.add(new Mechanic("87654321", "M. Ana López", "3007654321", "ana.lopez@taller.com", 38, "Transmisión"));
         mechanics.add(new Mechanic("11223344", "M. Roberto García", "3001122334", "roberto.garcia@taller.com", 52, "Eléctrica"));

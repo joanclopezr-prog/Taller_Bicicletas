@@ -9,8 +9,7 @@ public class ClientRepository {
 
     private ClientRepository() {
         clients = new ArrayList<>();
-
-        clients.add(new Client( "1090272139", "Alejandro Campo", "3224229356", "alejo@gmail.com", 20));
+        clients.add(new Client("1090272139", "Alejandro Campo", "3224229356", "alejo@gmail.com", 20));
         clients.add(new Client("108425322", "Danilo Ladino", "3224229358", "danilo@gmail.com", 20));
     }
 
