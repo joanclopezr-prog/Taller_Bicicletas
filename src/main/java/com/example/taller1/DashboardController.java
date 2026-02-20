@@ -7,6 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class DashboardController {
@@ -16,6 +18,17 @@ public class DashboardController {
     @FXML private Button btnMechanics;
     @FXML private Button btnBicycles;
     @FXML private Button btnAppointments;
+
+    private void loadView(Parent view) {
+        AnchorPane.setTopAnchor(view, 0.0);
+        AnchorPane.setBottomAnchor(view, 0.0);
+        AnchorPane.setLeftAnchor(view, 0.0);
+        AnchorPane.setRightAnchor(view, 0.0);
+        mainContent.getChildren().clear();
+        mainContent.getChildren().add(view);
+        Stage stage = (Stage) mainContent.getScene().getWindow();
+        stage.sizeToScene();
+    }
 
     @FXML
     protected void onClientsClick() {
@@ -43,8 +56,7 @@ public class DashboardController {
             Parent clients = loader.load();
             ClientController controller = loader.getController();
             controller.setDashboardController(this);
-            mainContent.getChildren().clear();
-            mainContent.getChildren().add(clients);
+            loadView(clients);
         } catch (IOException e) {
             showAlert("Error", "No se pudo cargar el módulo de Clientes", Alert.AlertType.ERROR);
             e.printStackTrace();
@@ -57,8 +69,8 @@ public class DashboardController {
             Parent mechanics = loader.load();
             MechanicController controller = loader.getController();
             controller.setDashboardController(this);
-            mainContent.getChildren().clear();
-            mainContent.getChildren().add(mechanics);
+            loadView(mechanics);
+
         } catch (IOException e) {
             showAlert("Error", "No se pudo cargar el módulo de Mecánicos", Alert.AlertType.ERROR);
             e.printStackTrace();
@@ -71,8 +83,7 @@ public class DashboardController {
             Parent bicycles = loader.load();
             BicycleController controller = loader.getController();
             controller.setDashboardController(this);
-            mainContent.getChildren().clear();
-            mainContent.getChildren().add(bicycles);
+            loadView(bicycles);
         } catch (IOException e) {
             showAlert("Error", "No se pudo cargar el módulo de Bicicletas", Alert.AlertType.ERROR);
             e.printStackTrace();
@@ -85,8 +96,7 @@ public class DashboardController {
             Parent appointments = loader.load();
             AppointmentController controller = loader.getController();
             controller.setDashboardController(this);
-            mainContent.getChildren().clear();
-            mainContent.getChildren().add(appointments);
+            loadView(appointments);
         } catch (IOException e) {
             showAlert("Error", "No se pudo cargar el módulo de Facturas", Alert.AlertType.ERROR);
             e.printStackTrace();
