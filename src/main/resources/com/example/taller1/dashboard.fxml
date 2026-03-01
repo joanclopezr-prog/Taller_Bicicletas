@@ -47,7 +47,7 @@
                     </VBox.margin>
                 </Button>
 
-                <Button fx:id="btnAppointments" mnemonicParsing="false" onAction="#onAppointmentsClick" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: white; -fx-text-fill: #722F37; -fx-font-weight: bold; -fx-background-radius: 5;" text="Facturas">
+                <Button fx:id="btnAppointments" mnemonicParsing="false" onAction="#onAppointmentsClick" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: white; -fx-text-fill: #722F37; -fx-font-weight: bold; -fx-background-radius: 5;" text="Citas">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -68,7 +68,8 @@
                         <Font name="Book Antiqua" size="28.0" />
                     </font>
                 </Label>
-                <Label layoutX="220.0" layoutY="300.0" style="-fx-text-fill: #7f8c8d;" text="Clientes - Mecánicos - Bicicletas - Facturas">
+                <Label layoutX="220.0" layoutY="300.0" style="-fx-text-fill: #7f8c8d;" text="Clientes - Mecánicos - Bicicletas - Citas
+">
                     <font>
                         <Font size="16.0" />
                     </font>
