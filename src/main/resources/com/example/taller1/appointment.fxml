@@ -4,57 +4,84 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.taller1.AppointmentController">
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.taller1.AppointmentController">
     <children>
-        <Label layoutX="300.0" layoutY="20.0" text="Gestión de Facturas">
+        <Label layoutX="300.0" layoutY="20.0" text="Gestión de Servicios Taller de Bicicletas">
             <font>
-                <Font name="Book Antiqua Bold" size="28.0" />
+                <Font name="Book Antiqua Bold" size="24.0" />
             </font>
         </Label>
 
-        <VBox layoutX="50.0" layoutY="70.0" prefHeight="200.0" prefWidth="700.0" spacing="10" style="-fx-padding: 15; -fx-background-color: #f8f9fa; -fx-background-radius: 5;">
-            <Label text="Nueva Factura" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        <VBox layoutX="50.0" layoutY="70.0" prefHeight="350.0" prefWidth="900.0" spacing="10" style="-fx-padding: 15; -fx-background-color: #f8f9fa; -fx-background-radius: 5;">
+            <Label text="Nuevo Servicio" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-size: 14px;"/>
 
-            <GridPane hgap="8" vgap="8">
+            <GridPane hgap="10" vgap="10">
                 <columnConstraints>
-                    <ColumnConstraints prefWidth="100"/>
-                    <ColumnConstraints prefWidth="250"/>
-                    <ColumnConstraints prefWidth="100"/>
-                    <ColumnConstraints prefWidth="250"/>
+                    <ColumnConstraints prefWidth="120"/>
+                    <ColumnConstraints prefWidth="280"/>
+                    <ColumnConstraints prefWidth="120"/>
+                    <ColumnConstraints prefWidth="280"/>
                 </columnConstraints>
 
                 <children>
-                    <Label text="Fecha:" GridPane.rowIndex="0"/>
+
+                    <Label text="Fecha Ingreso:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
                     <DatePicker fx:id="datePicker" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="Seleccione fecha"/>
 
-                    <Label text="Cliente:" GridPane.rowIndex="1"/>
-                    <ComboBox fx:id="cmbClient" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Seleccione Cliente" prefWidth="250"/>
+                    <Label text="Hora Ingreso:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                    <ComboBox fx:id="cmbTime" GridPane.rowIndex="0" GridPane.columnIndex="3" promptText="Seleccione hora" prefWidth="280"/>
 
-                    <Label text="Mecánico:" GridPane.rowIndex="2"/>
-                    <ComboBox fx:id="cmbMechanic" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Seleccione Mecánico" prefWidth="250"/>
 
-                    <Label text="Total:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-                    <TextField fx:id="txtTotal" GridPane.rowIndex="1" GridPane.columnIndex="3" disable="true" promptText="Calculado automáticamente"/>
+                    <Label text="Cliente:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="cmbClient" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Seleccione Cliente" prefWidth="280"/>
+
+                    <Label text="Bicicleta:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                    <ComboBox fx:id="cmbBicycle" GridPane.rowIndex="1" GridPane.columnIndex="3" promptText="Seleccione Bicicleta" prefWidth="280"/>
+
+
+                    <Label text="Mecánico:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="cmbMechanic" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Seleccione Mecánico" prefWidth="280"/>
+
+                    <Label text="Motivo Servicio:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                    <TextField fx:id="txtServiceReason" GridPane.rowIndex="2" GridPane.columnIndex="3" promptText="Ej: Freno delantero no funciona"/>
+
+
+                    <Label text="Diagnóstico:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <TextArea fx:id="txtDiagnosis" GridPane.rowIndex="3" GridPane.columnIndex="1" prefHeight="60" prefWidth="280" wrapText="true" promptText="Hallazgos del mecánico"/>
+
+                    <Label text="Trabajos Realizados:" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+                    <TextArea fx:id="txtWorkDone" GridPane.rowIndex="3" GridPane.columnIndex="3" prefHeight="60" prefWidth="280" wrapText="true" promptText="Reparaciones efectuadas"/>
+
+
+                    <Label text="Costo Total:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtTotalCost" GridPane.rowIndex="4" GridPane.columnIndex="1" disable="true" promptText="Calculado automáticamente"/>
+
+
                 </children>
             </GridPane>
 
-            <HBox spacing="10" alignment="CENTER">
-                <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#onRegister" text=" Registrar Factura"
-                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold;"/>
-                <Button fx:id="btnClean" mnemonicParsing="false" onAction="#onClean" text=" Limpiar"
-                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <HBox spacing="10" alignment="CENTER" translateY="20">
+                <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#onRegister" text=" Registrar Servicio"
+                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                <Button fx:id="btnClean" mnemonicParsing="false" onAction="#onClean" text=" Limpiar Formulario"
+                        style="-fx-background-color: #722F37; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
             </HBox>
         </VBox>
 
-        <VBox layoutX="50.0" layoutY="300.0" prefHeight="250.0" prefWidth="700.0" spacing="10">
-            <Label text="Historial de Facturas" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-            <TableView fx:id="tableBills" prefHeight="200.0" prefWidth="700.0">
+        <VBox layoutX="50.0" layoutY="440.0" prefHeight="280.0" prefWidth="900.0" spacing="10">
+            <Label text="Historial de Servicios" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-size: 14px;"/>
+            <TableView fx:id="tableAppointments" prefHeight="250.0" prefWidth="900.0">
                 <columns>
-                    <TableColumn fx:id="colId" text="ID Factura" prefWidth="80"/>
-                    <TableColumn fx:id="colClient" text="Cliente" prefWidth="150"/>
-                    <TableColumn fx:id="colMechanic" text="Mecánico" prefWidth="150"/>
-                    <TableColumn fx:id="colTotal" text="Total" prefWidth="100"/>
-                    <TableColumn fx:id="colDate" text="Fecha" prefWidth="100"/>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colClient" text="Cliente" prefWidth="100"/>
+                    <TableColumn fx:id="colBicycle" text="Bicicleta" prefWidth="120"/>
+                    <TableColumn fx:id="colMechanic" text="Mecánico" prefWidth="90"/>
+                    <TableColumn fx:id="colDate" text="Fecha" prefWidth="70"/>
+                    <TableColumn fx:id="colTime" text="Hora" prefWidth="60"/>
+                    <TableColumn fx:id="colServiceReason" text="Motivo" prefWidth="90"/>
+                    <TableColumn fx:id="colDiagnosis" text="Diagnóstico" prefWidth="100"/>
+                    <TableColumn fx:id="colWorkDone" text="Trabajos" prefWidth="100"/>
+                    <TableColumn fx:id="colTotalCost" text="Costo" prefWidth="70"/>
                 </columns>
             </TableView>
         </VBox>
